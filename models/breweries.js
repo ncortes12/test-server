@@ -67,8 +67,8 @@ module.exports = function(sequelize, DataTypes) {
 		}
   });
 
-  Users.associate = function (models) {
-		Brewer.belongToMany(Users, { through: 'userBreweries', foreignKey: { brewerId } })
+  Brewer.associate = function (models) {
+		Brewer.belongsToMany(models.Users, { through: 'userBreweries' })
 	}
 
   return Brewer;

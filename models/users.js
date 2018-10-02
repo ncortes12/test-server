@@ -41,7 +41,7 @@ module.exports = function (sequelize, DataTypes) {
 	});
 
 	Users.associate = function (models) {
-		Users.belongToMany(Brewer, { through: 'userBreweries', foreignKey: { usersId } })
+		Users.belongsToMany(models.Brewer, { through: 'userBreweries' })
 	}
 
 	return Users;
