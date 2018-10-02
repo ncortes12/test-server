@@ -1,8 +1,8 @@
 "use strict";
 
-module.exports = function(sequelize, DataTypes) {
-  var Users = sequelize.define("Users", {
-		
+module.exports = function (sequelize, DataTypes) {
+	var Users = sequelize.define("Users", {
+
 		firstName: {
 			type: DataTypes.STRING,
 			allowNull: false
@@ -11,34 +11,38 @@ module.exports = function(sequelize, DataTypes) {
 			type: DataTypes.STRING,
 			allowNull: false
 		},
-    email: {
-      type: DataTypes.STRING,
+		email: {
+			type: DataTypes.STRING,
 			allowNull: false,
 			validate: {
-        min: 1,
-        isEmail: true
-      }
+				min: 1,
+				isEmail: true
+			}
 		},
 		phone: {
 			type: DataTypes.STRING,
 			allowNull: false,
 			validate: {
-        min: 12,
-        not: ["[a-z]",'i']
-      }
+				min: 12,
+				not: ["[a-z]", 'i']
+			}
 		},
 		password: {
 			type: DataTypes.STRING,
 			allowNull: false,
 			validate: {
-        min: 8,
-      }
+				min: 8,
+			}
 		},
 		loggedIn: {
 			type: DataTypes.BOOLEAN,
 			defaultValue: false
 		}
-  });
+	});
 
-  return Users;
+	Users.associate = function (models) {
+		Users.belongToMany(Brewer, { through: 'userBreweries', foreignKey: { usersId } })
+	}
+
+	return Users;
 };
