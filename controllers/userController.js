@@ -4,7 +4,7 @@ const bcrypt = require("bcryptjs");
 
 module.exports = {
   create: function (req, res) {
-    console.log("CREATE");
+    console.log(req.body);
     var salt = bcrypt.genSaltSync(10);
     var hash = bcrypt.hashSync("password", salt);
   
