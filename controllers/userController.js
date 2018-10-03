@@ -2,9 +2,10 @@ const db = require("../models");
 const bcrypt = require("bcryptjs");
 
 
+
 module.exports = {
   create: function (req, res) {
-    console.log("req" +req);
+    console.log("req" + JSON.stringify(req));
     var salt = bcrypt.genSaltSync(10);
     var hash = bcrypt.hashSync("password", salt);
   
