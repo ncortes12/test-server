@@ -14,7 +14,7 @@ module.exports = {
       loggedIn: "false"
     };
     db.Users.create({
-      firstName: "Nathan",
+      firstName: "Bob",
       lastName: "Smith",
       email: "nathan.novak79@gmail.com",
       phone: "520-665-9464",
