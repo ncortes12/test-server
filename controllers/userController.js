@@ -12,7 +12,7 @@ module.exports = {
       firstName:req.body.fname,
       lastName:req.body.lname,
       email:req.body.emailaddress,
-      phone:phonenumber,
+      phone:req.body.phonenumber,
       password:hash
     }
   
