@@ -6,13 +6,8 @@ module.exports = {
   create: function (req, res) {
     console.log("CREATE");
     var salt = bcrypt.genSaltSync(10);
-    var hash = bcrypt.hashSync(req.password, salt);
-    let user = {
-      email: "ncortes1415@gmail.com",
-      phone: "520-665-9464",
-      password: hash,
-      loggedIn: "false"
-    };
+    var hash = bcrypt.hashSync("password", salt);
+  
     db.Users.create({
       firstName: "Bob",
       lastName: "Smith",
