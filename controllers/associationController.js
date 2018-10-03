@@ -13,7 +13,7 @@ module.exports ={
  },
 
  getFavBrewery: function(req,res){
-     db.userBreweries.findAll({where:{userId:1}})
+     db.userBreweries.findAll({where:{UserId:1}})
      .then(function(dbModel){
          res.json(dbModel)
      })
