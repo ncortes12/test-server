@@ -40,9 +40,7 @@ module.exports = function (sequelize, DataTypes) {
 		}
 	});
 
-	Users.associate = function (models) {
-		Users.belongsToMany(models.Brewer, { through: 'userBreweries' })
-	}
+
 
 	return Users;
 };

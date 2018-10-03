@@ -1,6 +1,7 @@
 const db = require("../models");
 const bcrypt = require("bcryptjs");
 
+
 module.exports = {
   create: function (req, res) {
     console.log("CREATE");
@@ -60,5 +61,7 @@ module.exports = {
   logout: function (req, res) {
     db.Users.update({ loggedIn: false }, { where: { id: "1" } })
       .then(dbModel => res.json(dbModel))
-  }
+  },
+
+ 
 };

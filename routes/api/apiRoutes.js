@@ -29,6 +29,11 @@ router.route("/brewers/login")
 router.route("/brewers/logout")
   .post(controller.BrewerController.logout)
 
+router.route("/users/favbrewery")
+.post(controller.AssociationController.addFavBrewery)
+.get(controller.AssociationController.getFavBrewery)
+
+
 
 
 
