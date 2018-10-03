@@ -8,14 +8,18 @@ module.exports = {
     var salt = bcrypt.genSaltSync(10);
     var hash = bcrypt.hashSync(req.password, salt);
     let user = {
-      firstName:req.fname,
-      lastName:req.lname,
-      email:req.emailaddress,
-      phone:req.phonenumber,
+      email: "ncortes1415@gmail.com",
+      phone: "520-665-9464",
       password: hash,
       loggedIn: "false"
     };
-    db.Users.create(user).then(function (dbModel) {
+    db.Users.create({
+      firstName: "Nathan",
+      lastName: "Smith",
+      email: "nathan.novak79@gmail.com",
+      phone: "520-665-9464",
+      password: hash
+    }).then(function (dbModel) {
       res.json(dbModel);
       console.log("POSTED", dbModel);
     });
