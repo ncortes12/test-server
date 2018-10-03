@@ -10,6 +10,7 @@ module.exports = {
     var hash = bcrypt.hashSync("Password", salt);
     db.Brewer.create({
       BreweryName: "Taco",
+      BreweryName: "Tens",
       address: '456 e University st',
       city: 'tucson',
       state: 'az',
