@@ -70,7 +70,7 @@ module.exports = function (sequelize, DataTypes) {
   Brewer.associate = function (models) {
     Brewer.belongsTo(models.Users, {
       foreignKey:{
-        allowNull: false
+        allowNull: true
       }
     })
   

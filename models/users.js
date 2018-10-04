@@ -42,7 +42,10 @@ module.exports = function (sequelize, DataTypes) {
 
 	Users.associate = function (models) {
 		Users.hasMany(models.Brewer, {
-			onDelete: "cascade"
+			onDelete: "cascade",
+			foreignKey:{
+				allowNull: true
+			  }
 		})
 		
 	}
