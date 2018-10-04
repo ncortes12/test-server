@@ -6,8 +6,8 @@ router.route("/users")
   .get(controller.UserController.findAll)
   .post(controller.UserController.create);
 
-router.route("/users/:id")
-  .get(controller.UserController.findById)
+// router.route("/users/:id")
+//   .get(controller.UserController.findById)
 
 router.route("/users/login")
   .post(controller.UserController.findOne)
@@ -31,7 +31,7 @@ router.route("/brewers/logout")
 
 router.route("/users/favbrewery")
 .post(controller.AssociationController.addFavBrewery)
-.get(controller.AssociationController.getFavBrewery)
+// .get(controller.AssociationController.getFavBrewery)
 
 
 

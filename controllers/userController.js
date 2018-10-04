@@ -4,21 +4,38 @@ const bcrypt = require("bcryptjs");
 
 
 module.exports = {
+  // create: function (req, res) {
+  //   console.log("req" + JSON.stringify(req.body));
+  //   var salt = bcrypt.genSaltSync(10);
+  //   var hash = bcrypt.hashSync(req.body.password, salt);
+  //   var user = {
+  //     firstName:req.body.fname,
+  //     lastName:req.body.lname,
+  //     email:req.body.emailaddress,
+  //     phone:req.body.phonenumber,
+  //     password:hash
+  //   }
+  
+  //   db.Users.create(user).then(function (dbModel) {
+  //     res.json(dbModel);
+  //     console.log("POSTED", dbModel);
+  //   });
+  // },
   create: function (req, res) {
     console.log("req" + JSON.stringify(req.body));
     var salt = bcrypt.genSaltSync(10);
-    var hash = bcrypt.hashSync(req.body.password, salt);
+    var hash = bcrypt.hashSync("password", salt);
     var user = {
-      firstName:req.body.fname,
-      lastName:req.body.lname,
-      email:req.body.emailaddress,
-      phone:req.body.phonenumber,
-      password:hash
+      firstName:"Nicole",
+      lastName:"Cortes",
+      email:"ncortes1415@gmail.com",
+      phone:"5206659464",
+      password:hash,
+      
     }
   
     db.Users.create(user).then(function (dbModel) {
-      res.json(dbModel);
-      console.log("POSTED", dbModel);
+      res.json(dbModel)
     });
   },
 

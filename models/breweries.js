@@ -1,6 +1,6 @@
 "use strict";
 
-module.exports = function(sequelize, DataTypes) {
+module.exports = function (sequelize, DataTypes) {
   var Brewer = sequelize.define("Brewer", {
     BreweryName: {
       type: DataTypes.STRING,
@@ -13,7 +13,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false,
     },
-     city: {
+    city: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -26,15 +26,15 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       validate: {
         // max: 10,
-        not: ["[a-z]",'i']
+        not: ["[a-z]", 'i']
       }
     },
     phone: {
-			type: DataTypes.STRING,
+      type: DataTypes.STRING,
       allowNull: false,
       validate: {
         min: 12,
-        not: ["[a-z]",'i']
+        not: ["[a-z]", 'i']
       }
     },
     email: {
@@ -48,26 +48,33 @@ module.exports = function(sequelize, DataTypes) {
     description: {
       type: DataTypes.TEXT,
       validate: {
-       len: [2, 500]
+        len: [2, 500]
       }
     },
     hours: {
       type: DataTypes.STRING
     },
     password: {
-			type: DataTypes.STRING,
+      type: DataTypes.STRING,
       allowNull: false,
       validate: {
         min: 8
       }
-		},
-		loggedIn: {
-			type: DataTypes.BOOLEAN,
-			defaultValue: false
-		}
+    },
+    loggedIn: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
+    }
   });
 
- 
+  Brewer.associate = function (models) {
+    Brewer.belongsTo(models.Users, {
+      foreignKey:{
+        allowNull: false
+      }
+    })
+  
+  }
 
   return Brewer;
 };

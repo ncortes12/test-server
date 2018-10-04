@@ -9,7 +9,7 @@ module.exports = {
     var salt = bcrypt.genSaltSync(10);
     var hash = bcrypt.hashSync("Password", salt);
     db.Brewer.create({
-      BreweryName: "Taco",
+      BreweryName: "Hop Shop",
       address: '456 e University st',
       city: 'tucson',
       state: 'az',
@@ -19,7 +19,8 @@ module.exports = {
       description: 'HOWWEEELLLL',
       hours: '9-5',
       password: hash,
-      loggedIn: 'false'
+      loggedIn: 'false',
+      UsersId: 1
     }).then(function (dbModel) {
       res.json(dbModel);
       console.log("POSTED", dbModel)
