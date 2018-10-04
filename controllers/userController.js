@@ -22,19 +22,19 @@ module.exports = {
     });
   },
 
-  findAll: function (req, res) {
-    console.log("Get Saved");
-    db.Users.findAll({})
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
-  },
+  // findAll: function (req, res) {
+  //   console.log("Get Saved");
+  //   db.Users.findAll({})
+  //     .then(dbModel => res.json(dbModel))
+  //     .catch(err => res.status(422).json(err));
+  // },
 
-  findById: function (req, res) {
-    console.log(req.params);
-    db.Users.findById(req.params.id)
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
-  },
+  // findById: function (req, res) {
+  //   console.log(req.params);
+  //   db.Users.findById(req.params.id)
+  //     .then(dbModel => res.json(dbModel))
+  //     .catch(err => res.status(422).json(err));
+  // },
 
   delete: function (req, res) {
     db.Users.destroy({
