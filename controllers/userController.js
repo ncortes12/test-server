@@ -39,19 +39,19 @@ module.exports = {
     });
   },
 
-  findAll: function (req, res) {
-    console.log("Get Saved");
-    db.Users.findAll({})
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
-  },
+  // findAll: function (req, res) {
+  //   console.log("Get Saved");
+  //   db.Users.findAll({})
+  //     .then(dbModel => res.json(dbModel))
+  //     .catch(err => res.status(422).json(err));
+  // },
 
-  findById: function (req, res) {
-    console.log(req.params);
-    db.Users.findById(req.params.id)
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
-  },
+  // findById: function (req, res) {
+  //   console.log(req.params);
+  //   db.Users.findById(req.params.id)
+  //     .then(dbModel => res.json(dbModel))
+  //     .catch(err => res.status(422).json(err));
+  // },
 
   delete: function (req, res) {
     db.Users.destroy({
@@ -61,14 +61,15 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   findOne: function (req, res) {
-    db.Users.findOne({ where: { email: 'ncortes1415@gmail.com' } })
+    console.log("BLAH", req)
+    db.Users.findOne({ where: { email: 'n1@n.com' } })
       .then(dbModel => {
         if (bcrypt.compare("Password", dbModel.password)) {
           db.Users.update({ loggedIn: true }, { where: { id: dbModel.id } })
             .then(result => db.Users.findOne({ where: { id: result } })
               .then(user => res.json(user)))
-
         }
+        else console.log("No User!!!")
       })
   },
 
