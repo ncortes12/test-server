@@ -7,21 +7,35 @@ module.exports = {
   create: function (req, res) {
     console.log("Post Brewer", res)
     var salt = bcrypt.genSaltSync(10);
-    var hash = bcrypt.hashSync("Password", salt);
-    db.Brewer.create({
-      BreweryName: "Hop Shop",
-      address: '456 e University st',
-      city: 'tucson',
-      state: 'az',
-      zip: '85740',
-      phone: '888-222-3455',
-      email: 'n@n.com',
-      description: 'HOWWEEELLLL',
-      hours: '9-5',
+    var hash = bcrypt.hashSync(req.body.password, salt);
+    // var brewer = {
+    //   BreweryName: "Hop Shop",
+    //   address: '456 e University st',
+    //   city: 'tucson',
+    //   state: 'az',
+    //   zip: '85740',
+    //   phone: '888-222-3455',
+    //   email: 'n@n.com',
+    //   description: 'HOWWEEELLLL',
+    //   hours: '9-5',
+    //   password: hash,
+    //   loggedIn: 'false',
+     
+    // }
+    var brewer = {
+      BreweryName: req.body.breweryname,
+      address: req.body.streetaddress,
+      city: req.body.city,
+      state: req.body.state,
+      zip: req.body.zipcode,
+      phone: req.body.phonenumber,
+      email: req.body.emailaddress,
+      hours: req.body.hours,
       password: hash,
       loggedIn: 'false',
-      UsersId: 1
-    }).then(function (dbModel) {
+
+    }
+    db.Brewer.create(brewer).then(function (dbModel) {
       res.json(dbModel);
       console.log("POSTED", dbModel)
     });
