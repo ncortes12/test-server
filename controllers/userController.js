@@ -61,7 +61,7 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   findOne: function (req, res) {
-    console.log("BLAH", req)
+    console.log("req" + JSON.stringify(req.body));
     db.Users.findOne({ where: { email: 'n1@n.com' } })
       .then(dbModel => {
         if (bcrypt.compare("Password", dbModel.password)) {
