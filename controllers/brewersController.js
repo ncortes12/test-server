@@ -20,7 +20,7 @@ module.exports = {
     //   hours: '9-5',
     //   password: hash,
     //   loggedIn: 'false',
-     
+
     // }
     var brewer = {
       BreweryName: req.body.breweryname,
@@ -71,15 +71,15 @@ module.exports = {
 
   findOne: function (req, res) {
     console.log("req" + JSON.stringify(req.body));
-    db.Brewer.findOne({ where: { email: 'n@n.com' } })
+    db.Brewer.findOne({ where: { email: req.body.user } })
       .then(dbModel => {
-        if (bcrypt.compare("Password", dbModel.password)) {
+        if (bcrypt.compare(req.body.password, dbModel.password)) {
           db.Brewer.update({ loggedIn: true }, { where: { id: dbModel.id } })
-            .then(result => db.Brewer.findOne({ where: { id: result } })
+            .then(result => db.Brewer.findOne({ where: { id: dbModel.id } })
               .then(user => res.json(user)))
-
         }
       })
+      .catch(err => res.status(422).json(err))
   },
 
   logout: function (req, res) {
