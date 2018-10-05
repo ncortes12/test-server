@@ -62,9 +62,9 @@ module.exports = {
   },
   findOne: function (req, res) {
     console.log("req" + JSON.stringify(req.body));
-    db.Users.findOne({ where: { email: 'n1@n.com' } })
+    db.Users.findOne({ where: { email: req.body.user } })
       .then(dbModel => {
-        if (bcrypt.compare("Password", dbModel.password)) {
+        if (bcrypt.compare(req.body.password, dbModel.password)) {
           db.Users.update({ loggedIn: true }, { where: { id: dbModel.id } })
             .then(result => db.Users.findOne({ where: { id: result } })
               .then(user => res.json(user)))
