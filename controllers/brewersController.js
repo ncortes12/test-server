@@ -70,6 +70,7 @@ module.exports = {
   },
 
   findOne: function (req, res) {
+    console.log("req" + JSON.stringify(req.body));
     db.Brewer.findOne({ where: { email: 'n@n.com' } })
       .then(dbModel => {
         if (bcrypt.compare("Password", dbModel.password)) {
