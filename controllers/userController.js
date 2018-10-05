@@ -66,7 +66,7 @@ module.exports = {
       .then(dbModel => {
         if (bcrypt.compare(req.body.password, dbModel.password)) {
           db.Users.update({ loggedIn: true }, { where: { id: dbModel.id } })
-            .then(result => db.Users.findOne({ where: { id: result } })
+            .then(result => db.Users.findOne({ where: { id: dbModel.id } })
               .then(user => {res.json(user)
               console.log("user object: " + JSON.stringify(user))}
               
