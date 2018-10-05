@@ -68,7 +68,7 @@ module.exports = {
           db.Users.update({ loggedIn: true }, { where: { id: dbModel.id } })
             .then(result => db.Users.findOne({ where: { id: result } })
               .then(user => {res.json(user)
-              console.log("user object: " + user)}
+              console.log("user object: " + JSON.stringify(user))}
               
               ))
         }
