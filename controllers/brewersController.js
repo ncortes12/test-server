@@ -5,39 +5,40 @@ const bcrypt = require('bcryptjs');
 module.exports = {
 
   create: function (req, res) {
-    console.log("Post Brewer", res)
+    console.log("req" + JSON.stringify(req.body));
     var salt = bcrypt.genSaltSync(10);
     var hash = bcrypt.hashSync(req.body.password, salt);
-    var brewer = {
-      BreweryName: "Hop Shop",
-      address: '456 e University st',
-      city: 'tucson',
-      state: 'az',
-      zip: '85740',
-      phone: '888-222-3455',
-      email: 'n@n.com',
-      description: 'HOWWEEELLLL',
-      hours: '9-5',
-      password: hash,
-      loggedIn: 'false',
-     
-    }
     // var brewer = {
-    //   BreweryName: req.body.breweryname,
-    //   address: req.body.streetaddress,
-    //   city: req.body.city,
-    //   state: req.body.state,
-    //   zip: req.body.zipcode,
-    //   phone: req.body.phonenumber,
-    //   email: req.body.emailaddress,
-    //   hours: req.body.hours,
+    //   BreweryName: "Hop Shop",
+    //   address: '456 e University st',
+    //   city: 'tucson',
+    //   state: 'az',
+    //   zip: '85740',
+    //   phone: '888-222-3455',
+    //   email: 'n@n.com',
+    //   description: 'HOWWEEELLLL',
+    //   hours: '9-5',
     //   password: hash,
     //   loggedIn: 'false',
-
+     
     // }
+    var brewer = {
+      BreweryName: req.body.breweryname,
+      address: req.body.streetaddress,
+      city: req.body.city,
+      state: req.body.state,
+      zip: req.body.zipcode,
+      phone: req.body.phonenumber,
+      email: req.body.emailaddress,
+      hours: req.body.hours,
+      password: hash,
+      loggedIn: 'false',
+
+    }
     db.Brewer.create(brewer).then(function (dbModel) {
+
       res.json(dbModel);
-      console.log("POSTED", dbModel)
+      // console.log("POSTED", dbModel)
     });
   },
 
