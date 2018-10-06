@@ -5,26 +5,27 @@ const bcrypt = require('bcryptjs');
 module.exports = {
 
   create: function (req, res) {
-    console.log("Post Brewer", res)
+    // console.log("Post Brewer", res)
     var salt = bcrypt.genSaltSync(10);
     var hash = bcrypt.hashSync("Password", salt);
     db.Brewer.create({
-      BreweryName: "Hop Shop",
-      address: '456 e University st',
+      BreweryName: "Thunder Canyon Brewstillery",
+      address: '220 E. Broadway',
       city: 'tucson',
       state: 'az',
-      zip: '85740',
-      phone: '888-222-3455',
-      email: 'n@n.com',
-      description: 'HOWWEEELLLL',
-      hours: '9-5',
+      zip: '85701',
+      phone: '(520) 396-3480',
+      email: 'ThunderCanyonBreweryRestaurant&Pub@gmail.com',
+      description: 'Its good',
+      hours: '12-10',
       password: hash,
-      loggedIn: 'false',
-      UsersId: 1
+      // loggedIn: 'false',
+      // UsersId: 1
     }).then(function (dbModel) {
       res.json(dbModel);
       console.log("POSTED", dbModel)
-    });
+    })
+    .catch(err => console.log(err))
   },
 
   findAll: function (req, res) {
@@ -55,15 +56,16 @@ module.exports = {
   },
 
   findOne: function (req, res) {
-    db.Brewer.findOne({ where: { email: 'n@n.com' } })
+    console.log("req" + JSON.stringify(req.body));
+    db.Brewer.findOne({ where: { email: req.body.user } })
       .then(dbModel => {
-        if (bcrypt.compare("Password", dbModel.password)) {
+        if (bcrypt.compare(req.body.password, dbModel.password)) {
           db.Brewer.update({ loggedIn: true }, { where: { id: dbModel.id } })
-            .then(result => db.Brewer.findOne({ where: { id: result } })
+            .then(result => db.Brewer.findOne({ where: { id: dbModel.id } })
               .then(user => res.json(user)))
-
         }
       })
+      .catch(err => res.status(422).json(err))
   },
 
   logout: function (req, res) {

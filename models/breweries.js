@@ -2,12 +2,10 @@
 
 module.exports = function (sequelize, DataTypes) {
   var Brewer = sequelize.define("Brewer", {
+
     BreweryName: {
       type: DataTypes.STRING,
       allowNull: false,
-      validate: {
-        min: 1
-      }
     },
     address: {
       type: DataTypes.STRING,
@@ -68,13 +66,23 @@ module.exports = function (sequelize, DataTypes) {
   });
 
   Brewer.associate = function (models) {
-    Brewer.belongsTo(models.Users, {
-      foreignKey:{
-        allowNull: true
-      }
-    })
-  
+    // Brewer.belongsToMany(models.Users, {
+    //   through: "UserBrewer",
+		// 	as: 'users',
+		// 	// onDelete: "cascade",
+		// 	// foreignKey: 'BREWERSID'
+    // })
+   
   }
+  
+  // Brewer.associate = (models) => {
+  //   Brewer.hasMany(models.Beer, {
+  //     as: 'Beer',
+  //     foreignKey: {
+  //       allowNull: false
+  //     }
+  //   })
+  // }
 
   return Brewer;
 };

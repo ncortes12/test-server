@@ -19,7 +19,7 @@ if (process.env.NODE_ENV === "production") {
 app.use("/api", routes);
 
 
-var syncOptions = { force:true};
+var syncOptions = { force: false};
 
 // If running a test, set syncOptions.force to true
 // clearing the `testdb`

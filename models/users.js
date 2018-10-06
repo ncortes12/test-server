@@ -1,11 +1,21 @@
 "use strict";
 
-module.exports = function (sequelize, DataTypes) {
-	var Users = sequelize.define("Users", {
+module.exports = (sequelize, DataTypes) => {
+	const Users = sequelize.define("Users", {
 
+		id: {
+			type: DataTypes.UUID,
+      primaryKey: true,
+      defaultValue: DataTypes.UUIDV4,
+      allowNull: false
+		},
 		firstName: {
 			type: DataTypes.STRING,
-			allowNull: false
+			allowNull: false,
+		
+			// validate: {
+			// 	notEmpty: true
+			// }
 		},
 		lastName: {
 			type: DataTypes.STRING,
@@ -14,41 +24,48 @@ module.exports = function (sequelize, DataTypes) {
 		email: {
 			type: DataTypes.STRING,
 			allowNull: false,
-			validate: {
-				min: 1,
-				isEmail: true
-			}
+			unique: true,
+			// validate: {
+			// 	notEmpty: true
+			// }
 		},
 		phone: {
 			type: DataTypes.STRING,
 			allowNull: false,
-			validate: {
-				min: 12,
-				not: ["[a-z]", 'i']
-			}
+			// validate: {
+			// 	// min: 12,
+			// 	not: ["[a-z]", 'i']
+			// }
 		},
 		password: {
 			type: DataTypes.STRING,
 			allowNull: false,
-			validate: {
-				min: 8,
-			}
+			// validate: {
+			// 	min: 8,
+			// }
 		},
 		loggedIn: {
 			type: DataTypes.BOOLEAN,
 			defaultValue: false
-		}
+		},
+
 	});
 
-	Users.associate = function (models) {
-		Users.hasMany(models.Brewer, {
-			onDelete: "cascade",
-			foreignKey:{
-				allowNull: true
-			  }
-		})
-		
-	}
+	// Users.associate = function (models) {
+	// 	// Users.belongsToMany(models.Brewer, {
+	// 	// 	through: "UserBrewer",
+	// 	// 	as: 'brewers',
+	// 	// 	// onDelete: "cascade",
+	// 	// 	// foreignKey: 'USERSID'
+	// 	// })
+	// 	Users.hasMany(models.Brewer,{
+	// 		as: 'Brewer'
+	// 	})
+	// 	Users.hasMany(models.Beer,{
+	// 		as: 'Beer'
+	// 	})
+	// }
+
 
 	return Users;
 };
