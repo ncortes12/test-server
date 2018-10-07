@@ -9,6 +9,7 @@ module.exports = {
     var salt = bcrypt.genSaltSync(10);
     var hash = bcrypt.hashSync(req.body.password, salt);
     db.Brewer.create({
+
       BreweryName: req.body.breweryname,
       address: req.body.streetaddress,
       city: req.body.city,

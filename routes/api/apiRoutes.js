@@ -32,6 +32,9 @@ router.route("/users/favbrewery")
 .post(controller.AssociationController.addFavBrewery)
 .get(controller.AssociationController.getFavBrewery)
 
+router.route("/users/favbrewery/:id")
+.post(controller.AssociationController.addFavBrewery)
+.get(controller.AssociationController.getFavBrewery)
 
 
 
