@@ -5,22 +5,22 @@ const bcrypt = require('bcryptjs');
 module.exports = {
 
   create: function (req, res) {
-    // console.log("Post Brewer", res)
+    console.log("Post Brewer", res)
     var salt = bcrypt.genSaltSync(10);
-    var hash = bcrypt.hashSync("Password", salt);
+    var hash = bcrypt.hashSync(req.body.password, salt);
     db.Brewer.create({
-      BreweryName: "Thunder Canyon",
-      address: '220 E. Broadway',
-      city: 'tucson',
-      state: 'az',
-      zip: '85701',
-      phone: '(520) 396-3480',
-      email: 'ThunderCanyonBreweryRestaurant&Pub@gmail.com',
+
+      BreweryName: req.body.breweryname,
+      address: req.body.streetaddress,
+      city: req.body.city,
+      state: req.body.state,
+      zip: req.body.zipcode,
+      phone: req.body.phonenumber,
+      email: req.body.emailaddress,
       description: 'Its good',
-      hours: '12-10',
-      password: hash,
-      // loggedIn: 'false',
-      // UsersId: 1
+      hours: req.body.hours,
+      password: hash
+     
     }).then(function (dbModel) {
       res.json(dbModel);
       console.log("POSTED", dbModel)

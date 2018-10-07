@@ -22,18 +22,8 @@ module.exports = {
       console.log("POSTED", dbModel);
     });
   },
-  // create: function (req, res) {
-  //   console.log("req" + JSON.stringify(req.body));
-  //   var salt = bcrypt.genSaltSync(10);
-  //   var hash = bcrypt.hashSync("password", salt);
-  //   var user = {
-  //     firstName:"Nicole",
-  //     lastName:"Cortes",
-  //     email:"ncortes1415@gmail.com",
-  //     phone:"5206659464",
-  //     password:hash,
 
-  findAll: function (req, res) {
+findAll: function (req, res) {
     console.log("Get Saved");
     db.Users.findAll({})
       .then(dbModel => res.json(dbModel))
