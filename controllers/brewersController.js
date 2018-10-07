@@ -9,7 +9,7 @@ module.exports = {
     var salt = bcrypt.genSaltSync(10);
     var hash = bcrypt.hashSync("Password", salt);
     db.Brewer.create({
-      BreweryName: "Thunder Canyon Brewstillery",
+      BreweryName: "Thunder Canyon",
       address: '220 E. Broadway',
       city: 'tucson',
       state: 'az',
