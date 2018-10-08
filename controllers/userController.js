@@ -30,25 +30,14 @@ findAll: function (req, res) {
       .catch(err => res.status(422).json(err));
   },
 
-  //   db.Users.create(user).then(function (dbModel) {
-  //     res.json(dbModel)
-  //   });
-  // },
-
-  fetchMe(req, res) {
-  const username = req.decoded.data;
-  return models.Users
-  .find({
-    include: [{
-      model: models.Groups,
-      as: 'groups',
-      required: false,
-      attributes: ['id', 'name'],
-      through: { attributes: [] }
-    }],
-    where: { username }
-  })},
-
+  findById: function(req, res) {
+    console.log(req.params)
+    db.Users
+      .findById(req.params.id)
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+ 
   delete: function (req, res) {
     db.Users.destroy({
       where: { id: req.params.id }

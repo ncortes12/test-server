@@ -7,6 +7,9 @@ router
   .get(controller.UserController.findAll)
   .post(controller.UserController.create);
 
+router
+  .route("/users/find/:id")
+  .get(controller.UserController.findById)
 //finds and posts beers from Brewers Profile  
 router
   .route("/beers")
