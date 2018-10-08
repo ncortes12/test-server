@@ -1,20 +1,23 @@
 const router = require("express").Router();
 const controller = require("../../controllers");
 
+//finds and posts users
 router
   .route("/users")
   .get(controller.UserController.findAll)
   .post(controller.UserController.create);
 
+//finds and posts beers from Brewers Profile  
 router
   .route("/beers")
   .get(controller.BeerController.findAll)
   .post(controller.BeerController.create);
 
+
 router
   .route("/beers/:id")
   .get(controller.BeerController.findAll)
-  .post(controller.BeerController.create);
+  // .post(controller.BeerController.create);
 
 router
   .route("/brewers")
@@ -41,17 +44,19 @@ router
 
 router
   .route("/users/favbrewery/:id")
-  .post(controller.AssociationController.addFavBrewery)
+  // .post(controller.AssociationController.addFavBrewery)
   .get(controller.AssociationController.getFavBrewery);
 
 router
   .route("/users/favbeer")
-  .post(controller.AssociationController.addFavBeer);
-// .get(controller.AssociationController.getFavBeer)
+  .post(controller.AssociationController.addFavBeer)
+  .get(controller.AssociationController.getFavBeer);
 
 router
   .route("/users/favbeer/:id")
-  .post(controller.AssociationController.addFavBeer);
-// .get(controller.AssociationController.getFavBeer)
+  // .post(controller.AssociationController.addFavBeer)
+  .get(controller.AssociationController.getFavBeer)
+  .delete(controller.AssociationController.deleteFavBeer);
+
 
 module.exports = router;
