@@ -47,28 +47,20 @@ module.exports = {
          console.log("FavBreweriesArr", favBreweriesArr)
          res.json(favBreweriesArr);
        })
-    }) 
-    
-  }
+    })  
+  },
+
+  addFavBeer: function(req, res) {
+    console.log("REQ.BODY", req.body);
+    db.UserBeer.findOrCreate({
+      where: {
+        UserId: req.body.UserId,
+        BeerId: req.body.BeerId
+      }
+    }).then(dbModel => {
+      console.log("FAV", dbModel);
+    })
+    .catch(err => console.log(err))
+  },
 };
 
-// function getBrewery (id) {
-
-//   db.Brewer.findById(id).then(brewer => {
-//     console.log("brewerId", brewer);
-
-// //   var brewerArr = [];
-// //   for (var i = 0; i < brewer.length; i++) {
-// //     console.log("BREWER Loop", brewer[i])
-// //     var id = brewer[i].id;
-// //     var BreweryName = brewer[i].BreweryName;
-// //     brewerArr.push({
-// //       id: id,
-// //       BreweryName: BreweryName
-// //     });
-// //   }
-// //   console.log("BrewerArr", brewerArr)
-// // })
-// // .catch(err => console.log(err))
-//   })
-// }
