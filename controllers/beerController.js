@@ -32,7 +32,7 @@ module.exports = {
       .findAll({where:{BrewerId:req.body.id}})
       .then(dbModel => 
         {console.log(JSON.stringify(dbModel))
-          res.json(dbModel)
+         return res.json(dbModel)
      })
       .catch(err => res.status(422).json(err));
 	},
