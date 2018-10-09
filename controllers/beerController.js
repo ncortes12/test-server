@@ -3,7 +3,7 @@ const db = require("../models");
 module.exports = {
 
 	create: function(req, res) {
-    // console.log("Post Beer", res)
+    console.log("Post Beer", req)
     
     db.Beer.create({
 		 beerName: "Blue Moon",
