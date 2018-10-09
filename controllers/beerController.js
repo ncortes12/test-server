@@ -29,7 +29,7 @@ module.exports = {
 	findById: function(req, res) {  
     console.log(req)
     db.Beer
-      .findById(req.body.id)
+      .findAll({where:{BrewerId:req.body.id}})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
 	},
