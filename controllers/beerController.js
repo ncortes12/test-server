@@ -31,8 +31,8 @@ module.exports = {
     db.Beer
       .findAll({where:{BrewerId:req.body.id}})
       .then(dbModel => 
-        {
-          return res.json(dbModel)
+        {console.log(JSON.stringify(dbModel))
+          // return res.json(dbModel)
      })
       .catch(err => res.status(422).json(err));
 	},
