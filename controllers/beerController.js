@@ -6,11 +6,11 @@ module.exports = {
     console.log("Post Beer", req)
     
     db.Beer.create({
-		 beerName: "Blue Moon",
-		 brewer: "Coors",
-		 IBU: "65",
-		 ABV: "5.2",
-		 tastingNotes:"blah blah blah"
+		 beerName: req.body.beerName,
+		 BrewerId:req.body.brewerId,
+		 IBU: req.body.ibu,
+		 ABV: req.body.abv,
+		 tastingNotes:req.body.tastingNotes
        }).then(function(dbModel) {
       res.json(dbModel);
       console.log("Beer POSTED", dbModel)
