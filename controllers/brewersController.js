@@ -69,7 +69,7 @@ module.exports = {
   },
 
   logout: function (req, res) {
-    db.Brewer.update({ loggedIn: false }, { where: { id: "1" } })
+    db.Brewer.update({ loggedIn: false }, { where: { id: req.body.id } })
       .then(dbModel => res.json(dbModel))
   }
 };

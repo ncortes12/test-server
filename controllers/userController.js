@@ -66,7 +66,7 @@ findAll: function (req, res) {
   },
 
   logout: function (req, res) {
-    db.Users.update({ loggedIn: false }, { where: { id: "1" } })
+    db.Users.update({ loggedIn: false }, { where: { id:req.body.id  } })
       .then(dbModel => res.json(dbModel))
   },
 
