@@ -7,7 +7,7 @@ module.exports = {
     db.UserBrewer.findOrCreate({
       where: {
         UserId: req.body.UserId,
-        BrewerId: req.body.BrewerId
+        BrewerId: req.body.id
       }
     }).then(dbModel => {
       console.log("FAV", dbModel);
