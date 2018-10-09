@@ -3,11 +3,11 @@ const db = require("../models");
 
 module.exports = {
   addFavBrewery: function(req, res) {
-    console.log("REQ.BODY", req.body);
+    console.log("REQ.BODY", req.body.BrewerId);
     db.UserBrewer.findOrCreate({
       where: {
         UserId: req.body.UserId,
-        BrewerId: req.body.id
+        BrewerId: req.body.BrewerId
       }
     }).then(dbModel => {
       console.log("FAV", dbModel);
