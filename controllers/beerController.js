@@ -32,8 +32,8 @@ module.exports = {
       .findAll({where:{BrewerId:req.body.id}})
       .then(dbModel => 
         {
-          // return res.json(dbModel)
-      console.log("checking model" + dbModel)})
+          return res.json(dbModel)
+     })
       .catch(err => res.status(422).json(err));
 	},
 	
