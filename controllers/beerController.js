@@ -27,11 +27,11 @@ module.exports = {
 	},
 	
 	findById: function(req, res) {  
-    console.log(req.params)
-    db.Beer
-      .findById(req.params.id)
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
+    console.log(req)
+    // db.Beer
+    //   .findById(req.params.id)
+    //   .then(dbModel => res.json(dbModel))
+    //   .catch(err => res.status(422).json(err));
 	},
 	
 	delete: function(req, res) {
