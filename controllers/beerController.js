@@ -30,7 +30,8 @@ module.exports = {
     console.log(req)
     db.Beer
       .findAll({where:{BrewerId:req.body.id}})
-      .then(dbModel => {return res.json(dbModel)})
+      .then(dbModel => {return res.json(dbModel)
+      console.log(dbModel)})
       .catch(err => res.status(422).json(err));
 	},
 	
