@@ -19,7 +19,7 @@ router
 
 router
   .route("/beers/id")
-  .post(controller.BeerController.findAll)
+  .post(controller.BeerController.findById)
   // .post(controller.BeerController.create);
 
 router
