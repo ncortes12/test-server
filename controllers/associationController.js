@@ -30,7 +30,7 @@ module.exports = {
       console.log("GET FAV", req.body);
     db.UserBrewer.findAll({
         where: {
-            UserId: req.params.id
+            UserId: req.body.id
         }
     }).then(data => {
         // console.log("BREWERS", dbUBModel);
