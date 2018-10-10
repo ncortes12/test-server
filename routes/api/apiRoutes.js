@@ -46,9 +46,9 @@ router
   .get(controller.AssociationController.getFavBrewery);
 
 router
-  .route("/users/favbrewery/:id")
-  // .post(controller.AssociationController.addFavBrewery)
-  .get(controller.AssociationController.getFavBrewery);
+  .route("/users/favbrewery/id")
+  .post(controller.AssociationController.getFavBrewery)
+  // .get(controller.AssociationController.getFavBrewery);
 
 router
   .route("/users/favbeer")
