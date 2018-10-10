@@ -28,30 +28,30 @@ module.exports = {
 
   getFavBrewery: function (req, res) {
       console.log("GET FAV", req);
-    // db.UserBrewer.findAll({
-    //     where: {
-    //         UserId: req.params.id
-    //     }
-    // }).then(data => {
-    //     // console.log("BREWERS", dbUBModel);
-    //     let favBreweriesIdArr = [];
-    //    for (var i = 0; i < data.length; i++) {
-    //      console.log("LOOP", data[i].BrewerId);
-    //     favBreweriesIdArr.push(data[i].BrewerId)
-    //    }
-    //    db.Brewer.findAll({
-    //      where: {id: favBreweriesIdArr}
-    //    }).then(data => {
-    //     //  console.log("DATA", data);
-    //      favBreweriesArr = [];
-    //      for (var i = 0; i<data.length; i++){
-    //       //  console.log("Loop", data[i].dataValues)
-    //        favBreweriesArr.push(data[i].dataValues);
-    //      }
-    //      console.log("FavBreweriesArr", favBreweriesArr)
-    //      res.json(favBreweriesArr);
-    //    })
-    // })  
+    db.UserBrewer.findAll({
+        where: {
+            UserId: req.params.id
+        }
+    }).then(data => {
+        // console.log("BREWERS", dbUBModel);
+        let favBreweriesIdArr = [];
+       for (var i = 0; i < data.length; i++) {
+         console.log("LOOP", data[i].BrewerId);
+        favBreweriesIdArr.push(data[i].BrewerId)
+       }
+       db.Brewer.findAll({
+         where: {id: favBreweriesIdArr}
+       }).then(data => {
+        //  console.log("DATA", data);
+         favBreweriesArr = [];
+         for (var i = 0; i<data.length; i++){
+          //  console.log("Loop", data[i].dataValues)
+           favBreweriesArr.push(data[i].dataValues);
+         }
+         console.log("FavBreweriesArr", favBreweriesArr)
+         res.json(favBreweriesArr);
+       })
+    })  
   },
 
   addFavBeer: function(req, res) {
