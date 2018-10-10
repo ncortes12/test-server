@@ -27,7 +27,7 @@ module.exports = {
   },
 
   getFavBrewery: function (req, res) {
-      console.log("GET FAV", req);
+      console.log("GET FAV", req.body);
     db.UserBrewer.findAll({
         where: {
             UserId: req.params.id
